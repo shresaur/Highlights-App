@@ -1,0 +1,140 @@
+body {
+    background-color: #111111;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+input {
+    width: 300px;
+    height: 30px;
+    background-color: #3c3c3c;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border: none;
+    color: grey;
+    padding-left: 10px;
+}
+
+div {
+    background-color: #232323;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+.top {
+    display: flex;
+    padding: 0px;
+    width: 100%;
+}
+
+
+#episodeindex {
+    background-color: #232323;
+    margin-right:8px;
+    flex: 1;
+}
+
+.videos {
+    display: flex;
+    background-color: #111111;
+
+}
+.indexnoticethread{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    padding: 8px;
+}
+
+.indexnotice {
+    border-top: 1px solid #615f5f;
+    padding-top: 6px;
+}
+
+.indextitlenotice {
+    padding-bottom: 6px;
+}
+#mainbody {
+    margin-left: 300px;
+    margin-right: 300px;
+    background-color: #111111;
+}
+
+#indextitle {
+    border-bottom: 1px solid #FFBF00;
+    padding: 8px;
+}
+
+img {
+    width:186px;
+    height:105px;
+    border-radius: 2px;
+}
+
+img:hover {
+    filter: brightness(80%);
+}
+
+#indexepisodeimagelist {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y:scroll;
+    margin-left: 15px;
+    height: 500px;
+
+}
+
+#indexepisodeimage {
+    margin-top: 25px;
+    margin-right: 8px;
+
+}
+
+#homeicon img {
+    height:30px;
+    width:30px;
+    padding: 10px 0px 10px 10px;
+}
+
+
+#bottomnotice {
+    position: fixed;
+    bottom:0px;
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    padding-top: 8px;
+}
+
+#videoplayer {
+    display: flex;
+}
+
+#mainplayepisodebody {
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 10px;
+    background-color: #111111;
+}
+
+#episodeindexrelated{
+    flex: 1;
+    margin-left: 8px;
+}
+
+#description {
+    width: 1200px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 150px;
+
+}
+
+#videotitle {
+    padding-left: 5px;
+    font-size: .75em;
+    font-weight: bold;
+}

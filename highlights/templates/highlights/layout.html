@@ -1,0 +1,27 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>World Cup Highlights</title>
+    <link rel="stylesheet" href="{% static 'highlights/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="top">
+    <div id="homeicon">
+        <a href="{% url 'index' %}"> <img src="{% static 'highlights/homeicon.png' %}"/> </a>
+    </div>
+    <form>
+        <input type="search" name="q" placeholder="What do you want to watch?">
+    </form>
+</div>
+{% block body %}
+{% endblock body %}
+<div class="bottom">
+    <div id="bottomnotice">This site is invite only. Please do not share.</div>
+</div>
+</body>
+</html>

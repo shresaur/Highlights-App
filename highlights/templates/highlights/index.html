@@ -1,0 +1,33 @@
+{% extends "highlights/layout.html" %}
+
+
+{% block body %}
+<div id="mainbody">
+    <div class="indexnoticethread">
+        <div class="indextitlenotice"> Notice </div>
+        <div class="indexnotice"> This website will try to host highlights of various sports </div>
+    </div>
+    <div class="videos">
+        <div id="episodeindex">
+            <div id="indextitle">Fresh Updates</div>
+            <div id="indexepisodeimagelist">
+                <div id="indexepisodeimage">
+                    <div id="videoimage"><a href="{% url 'playepisode' %}"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></a></div>
+                    <div id="videotitle"> Video Title </div>
+                </div>
+                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
+                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
+                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
+                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
+                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
+                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
+                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
+
+            </div>
+        </div>
+        <div id="episodeindex"><div id="indextitle">Must See Games</div></div>
+        <div id="episodeindex"><div id="indextitle">Coming Soon</div></div>
+    </div>
+</div>
+
+{% endblock body %}
