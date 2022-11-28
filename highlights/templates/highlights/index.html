@@ -11,18 +11,12 @@
         <div id="episodeindex">
             <div id="indextitle">Fresh Updates</div>
             <div id="indexepisodeimagelist">
-                <div id="indexepisodeimage">
-                    <div id="videoimage"><a href="{% url 'playepisode' %}"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></a></div>
-                    <div id="videotitle"> Video Title </div>
-                </div>
-                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
-                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
-                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
-                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
-                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
-                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
-                <div id="indexepisodeimage"><img src="https://i.ytimg.com/vi/j0s8GFVTwGc/maxresdefault.jpg"/></div>
-
+                {% for list in data %}
+                    <div id="indexepisodeimage">
+                        <div id="videoimage"><a href="playepisode/{{list.videoid}}"><img src="{{list.thumbnail}}"/></a></div>
+                        <div id="videotitle">{{list.title}} </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
         <div id="episodeindex"><div id="indextitle">Must See Games</div></div>
