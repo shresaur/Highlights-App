@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-gtl1a=ycb5e&o1feis0jg(*spf5ssc8&#mw)2%f(trv6ugj+(p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -118,6 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = '/home/shrestrbl/runofplay/static'
 
 try:
     from local_settings import *
