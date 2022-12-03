@@ -44,3 +44,6 @@ def playepisode(request, videolink):
     infolist = datalist()
     return render(request, "highlights/playepisode.html", {"link": videolink, "data": infolist})
 
+def comingsoon(request):
+    return render(request, "highlights/comingsoon.html")
+
