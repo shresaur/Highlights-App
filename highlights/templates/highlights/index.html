@@ -7,20 +7,39 @@
         <div class="indextitlenotice"> Notice </div>
         <div class="indexnotice"> This website will try to host highlights of various sports </div>
     </div>
+    <div class="nav-frame">
+            <ul>
+                <li>Soccer</li>
+                <li>Formula 1</li>
+                <li>UFC</li>
+            </ul>
+    </div>
     <div class="videos">
         <div id="episodeindex">
             <div id="indextitle">Fresh Updates</div>
             <div id="indexepisodeimagelist">
-                {% for list in data %}
-                    <div id="indexepisodeimage">
-                        <div id="videoimage"><a href="playepisode/{{list.videoid}}"><img src="{{list.thumbnail}}"/></a></div>
-                        <div id="videotitle">{{list.title}} </div>
-                    </div>
-                {% endfor %}
+                <div id="indexepisodeimage">
+                    <div id="videoimage"><a href="/playepisode/KokKw1esPL8"><img src="/static/highlights/WC2022.jpg"/></a></div>
+                    <div id="videotitle">World Cup 2022 Qatar</div>
+                </div>
             </div>
         </div>
-        <div id="episodeindex"><div id="indextitle">Must See Games</div></div>
-        <div id="episodeindex"><div id="indextitle">Coming Soon</div></div>
+        <div id="episodeindex">
+            <div id="indextitle">Must See Highlights</div>
+        </div>
+        <div id="episodeindex">
+            <div id="indextitle">Coming Soon</div>
+            <div id="indexepisodeimagelist">
+                <div id="indexepisodeimage">
+                    <div id="videoimage"><img src="/static/highlights/F12022.jpg"/></div>
+                    <div id="videotitle">F1 Season 2022</div>
+                </div>
+                <div id="indexepisodeimage">
+                    <div id="videoimage"><img src="/static/highlights/PL2223.png"/></div>
+                    <div id="videotitle">Premier League 2022/23 </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

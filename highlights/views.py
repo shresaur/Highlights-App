@@ -31,16 +31,16 @@ def datalist():
     for i in data["items"]:
         title = i["snippet"]["title"]
         data_dict = {"title": title.replace('Highlights | 2022 FIFA World Cup', ''), "date": i["snippet"]["publishedAt"],
-                     "thumbnail": i["snippet"]["thumbnails"]["standard"]["url"], "videoid": i["snippet"]["resourceId"]["videoId"]}
+                     "thumbnail": i["snippet"]["thumbnails"]["high"]["url"], "videoid": i["snippet"]["resourceId"]["videoId"]}
         data_list.append(data_dict)
     return data_list
 
 
 def index(request):
-    infolist = datalist()
-    return render(request, "highlights/index.html", {"data": infolist})
+    return render(request, "highlights/index.html")
 
 
 def playepisode(request, videolink):
-    return render(request, "highlights/playepisode.html", {"link": videolink})
+    infolist = datalist()
+    return render(request, "highlights/playepisode.html", {"link": videolink, "data": infolist})
 

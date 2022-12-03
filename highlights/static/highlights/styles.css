@@ -30,7 +30,7 @@ div {
 }
 
 
-#episodeindex {
+#episodeindex, #episodeindexrelated {
     background-color: #232323;
     margin-right:8px;
     flex: 1 0 432px;
@@ -51,12 +51,13 @@ div {
 
 .indexnotice {
     border-top: 1px solid #615f5f;
-    padding-top: 6px;
+    padding: 15px;
+    font-size: .75em;
 
 }
 
 .indextitlenotice {
-    padding-bottom: 6px;
+    padding: 0 0 15px 15px;
 }
 
 #mainbody {
@@ -84,7 +85,7 @@ img:hover {
     filter: brightness(80%);
 }
 
-#indexepisodeimagelist {
+#indexepisodeimagelist, #indexepisodeimagelistrelated {
     display: flex;
     flex-wrap: wrap;
     overflow-y:scroll;
@@ -121,15 +122,19 @@ img:hover {
 }
 
 #mainplayepisodebody {
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 10px;
     background-color: #111111;
+    margin-top: 8px;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;/*center horizontally within parent*/
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1640px; /*make it as wide as possible but only up to 1640px*/
 }
 
-#episodeindexrelated{
-    flex: 1;
-    margin-left: 8px;
+#videoplayer {
+    margin-right: 8px;
 }
 
 #description {
@@ -144,4 +149,28 @@ img:hover {
     padding-left: 5px;
     font-size: .75em;
     font-weight: bold;
+}
+
+.nav-frame {
+    margin-top: 8px;
+    background-color: #111111;
+    border-top: 1px solid #615f5f;
+    border-bottom: 1px solid #615f5f;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+li {
+    display: inline;
+    margin-right: 20px;
+}
+
+#indexepisodeimagelistrelated {
+    height: 614px;
 }
