@@ -174,3 +174,18 @@ li {
 #indexepisodeimagelistrelated {
     height: 614px;
 }
+
+.descsection {
+    margin-top: 8px;
+    width: 1200px;
+}
+
+#maintitle {
+    padding: 10px;
+    border-bottom: 1px solid #615f5f;
+}
+
+#maindesc {
+    padding: 10px;
+    font-size: .85em;
+}

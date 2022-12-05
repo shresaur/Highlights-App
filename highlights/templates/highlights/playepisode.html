@@ -11,13 +11,16 @@
             <div id="indexepisodeimagelistrelated">
             {% for list in data %}
                 <div id="indexepisodeimage">
-                    <div id="videoimage"><a href="playepisode/{{list.videoid}}"><img src="{{list.thumbnail}}"/></a></div>
+                    <div id="videoimage"><a href="{% url 'playepisode' videolink=list.videoid %}"><img src="{{list.thumbnail}}"/></a></div>
                     <div id="videotitle">{{list.title}} </div>
                 </div>
             {% endfor %}
             </div>
         </div>
     </div>
-    <div id="description"> Description of the video </div>
+    <div class="descsection">
+        <div id="maintitle"> {{maintitle}} </div>
+        <div id="maindesc">{{maindescription}} </div>
+    </div>
 </div>
 {% endblock body %}

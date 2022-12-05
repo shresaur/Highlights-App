@@ -29,9 +29,14 @@ def datalist():
     data = response.json()
     data_list = []
     for i in data["items"]:
+        test_desc = i["snippet"]["description"].split("#", 1)
+        description = test_desc[0]
         title = i["snippet"]["title"]
-        data_dict = {"title": title.replace('Highlights | 2022 FIFA World Cup', ''), "date": i["snippet"]["publishedAt"],
-                     "thumbnail": i["snippet"]["thumbnails"]["high"]["url"], "videoid": i["snippet"]["resourceId"]["videoId"]}
+        rep_title = {"Highlights": "", "|": "", "2022 FIFA World Cup": "", "Round of 16": "", "Highlight": ""}
+        for key, value in rep_title.items():
+            title = title.replace(key, value)
+        data_dict = {"title": title, "date": i["snippet"]["publishedAt"],
+                     "thumbnail": i["snippet"]["thumbnails"]["high"]["url"], "videoid": i["snippet"]["resourceId"]["videoId"], "description": description}
         data_list.append(data_dict)
     return data_list
 
@@ -42,7 +47,15 @@ def index(request):
 
 def playepisode(request, videolink):
     infolist = datalist()
-    return render(request, "highlights/playepisode.html", {"link": videolink, "data": infolist})
+    maintitle = 'Qatar vs Ecuador'
+    maindesc = "Qatar and Ecuador kicked off the 2022 FIFA World Cup in style! Ecuador showed urgency and notched a penalty kick goal by Enner Valencia in the 16th minute. Valencia wasn’t done there, as he scored his second goal in the 31st minute. Both teams had chances in the second half but the score would stand at 2-0 in favor of Ecuador."
+    for list in infolist:
+        if videolink == list["videoid"]:
+            maintitle = list["title"]
+            maindesc = list["description"]
+        else:
+            pass
+    return render(request, "highlights/playepisode.html", {"link": videolink, "data": infolist, "maintitle": maintitle, "maindescription": maindesc})
 
 def comingsoon(request):
     return render(request, "highlights/comingsoon.html")
