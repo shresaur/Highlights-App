@@ -5,6 +5,10 @@ body {
     margin-right: 0px;
 }
 
+.searchbar {
+    display:flex;
+
+}
 input {
     width: 300px;
     height: 30px;
@@ -15,6 +19,17 @@ input {
     border: none;
     color: grey;
     padding-left: 10px;
+    border-radius: 3px 0 0 3px;
+}
+
+button {
+    height: 30px;
+    margin-left: 0px;
+    margin-top: 10px;
+    border: none;
+    width: 15%;
+    background-color: #555;
+    border-radius: 0 3px 3px 0;
 }
 
 div {
@@ -58,6 +73,8 @@ div {
 
 .indextitlenotice {
     padding: 0 0 15px 15px;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 #mainbody {
@@ -73,6 +90,8 @@ div {
 #indextitle {
     border-bottom: 1px solid #FFBF00;
     padding: 8px;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 img {

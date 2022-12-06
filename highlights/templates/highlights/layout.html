@@ -9,14 +9,16 @@
     <title>World Cup Highlights</title>
     <link rel="stylesheet" href="{% static 'highlights/styles.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div class="top">
     <div id="homeicon">
         <a href="{% url 'index' %}"> <img src="{% static 'highlights/homeicon.png' %}"/> </a>
     </div>
-    <form>
+    <form class="searchbar">
         <input type="search" name="q" placeholder="What do you want to watch?">
+        <button type="submit"><i class="fa fa-search"></i></button>
     </form>
 </div>
 {% block body %}
