@@ -3,6 +3,7 @@ body {
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
+    padding: 0;
 }
 
 .searchbar {
@@ -42,6 +43,9 @@ div {
     display: flex;
     padding: 0px;
     width: 100%;
+    min-width: 1296px;
+    padding-right: 8px;
+    padding-left: 8px;
 }
 
 
@@ -112,6 +116,23 @@ img:hover {
     height: 500px;
 
 }
+@media (max-width: 1295px) {
+  #indexepisodeimagelist {
+    width: 100%;
+    height: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  #episodeindex {
+    flex: 1;
+    margin-bottom: 8px;
+   }
+  .videos {
+    flex-direction: column;
+  }
+
+}
+
 
 #indexepisodeimage {
     margin-top: 25px;
@@ -176,6 +197,8 @@ img:hover {
     border-top: 1px solid #615f5f;
     border-bottom: 1px solid #615f5f;
     margin-bottom: 10px;
+    min-width: 1296px;
+    padding-right: 14px;
 }
 
 ul {
