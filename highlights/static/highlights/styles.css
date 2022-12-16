@@ -46,7 +46,7 @@ div {
 }
 
 
-#episodeindex {
+#episodeindex, #episodeindexrelated {
     background-color: #232323;
     margin-right:8px;
     flex: 1 0 432px;
@@ -103,7 +103,7 @@ img:hover {
     filter: brightness(80%);
 }
 
-#indexepisodeimagelist {
+#indexepisodeimagelist, #indexepisodeimagelistrelated {
     display: flex;
     flex-wrap: wrap;
     overflow-y:scroll;
@@ -133,6 +133,13 @@ img:hover {
 
 }
 
+
+#indexepisodeimage {
+    margin-top: 25px;
+    margin-right: 8px;
+
+}
+
 #homeicon img {
     height:30px;
     width:30px;
@@ -154,6 +161,25 @@ img:hover {
     background-color: black;
 }
 
+#videoplayer {
+    display: flex;
+}
+
+#mainplayepisodebody {
+    background-color: #111111;
+    margin-top: 8px;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;/*center horizontally within parent*/
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1640px; /*make it as wide as possible but only up to 1640px*/
+}
+
+#videoplayer {
+    margin-right: 8px;
+}
 
 #description {
     width: 1200px;
@@ -190,6 +216,15 @@ li {
     margin-right: 20px;
 }
 
+#indexepisodeimagelistrelated {
+    height: 614px;
+}
+
+.descsection {
+    margin-top: 8px;
+    width: 1200px;
+}
+
 #maintitle {
     padding: 10px;
     border-bottom: 1px solid #615f5f;
@@ -199,57 +234,3 @@ li {
     padding: 10px;
     font-size: .85em;
 }
-
-/*playepisode*/
-
-#mainplayepisodebody {
-    background-color: #111111;
-    margin-top: 8px;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;/*center horizontally within parent*/
-    width: 100%;
-    max-width: 1640px; /*make it as wide as possible but only up to 1640px*/
-}
-
-.episodevideos {
-    display: flex;
-    flex-direction: row;
-    background-color: #111111;
-}
-
-#videoplayer {
-    display: flex;
-    flex-direction: column;
-    margin-right: 8px;
-    background-color: #111111;
-    width: 50%;
-    flex-grow: 1;
-}
-.player{
-    height: 90%;
-}
-.descsection {
-    margin-top: 8px;
-    height: auto;
-}
-
-#episodeindexrelated {
-    background-color: #232323;
-    width: 432px;
-}
-
-#indexepisodeimagelistrelated {
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y:scroll;
-    margin-left: 15px;
-    height: 714px;
-}
-
-#indexepisodeimage {
-    margin-top: 25px;
-    margin-right: 8px;
-
-}
-

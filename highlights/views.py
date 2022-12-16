@@ -32,7 +32,7 @@ def datalist():
         test_desc = i["snippet"]["description"].split("#", 1)
         description = test_desc[0]
         title = i["snippet"]["title"]
-        rep_title = {"Highlights": "", "|": "", "2022 FIFA World Cup": "", "Round of 16": "", "Highlight": "", "Quarterfinals": "", "Semifinals": ""}
+        rep_title = {"Highlights": "", "|": "", "2022 FIFA World Cup": "", "Round of 16": "", "Highlight": ""}
         for key, value in rep_title.items():
             title = title.replace(key, value)
         data_dict = {"title": title, "date": i["snippet"]["publishedAt"],
