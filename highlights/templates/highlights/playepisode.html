@@ -2,9 +2,13 @@
 
 {% block body %}
 <div id="mainplayepisodebody">
-    <div class = "videos">
+    <div class = "episodevideos">
         <div id="videoplayer">
-            <iframe width="1200" height="650" src="https://www.youtube.com/embed/{{link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="player" src="https://www.youtube.com/embed/{{link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="descsection">
+                <div id="maintitle"> {{maintitle}} </div>
+                <div id="maindesc">{{maindescription}} </div>
+            </div>
         </div>
         <div id="episodeindexrelated">
             <div id="indextitle"> Related Videos </div>
@@ -17,10 +21,6 @@
             {% endfor %}
             </div>
         </div>
-    </div>
-    <div class="descsection">
-        <div id="maintitle"> {{maintitle}} </div>
-        <div id="maindesc">{{maindescription}} </div>
     </div>
 </div>
 {% endblock body %}
