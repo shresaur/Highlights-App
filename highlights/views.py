@@ -32,13 +32,34 @@ def datalist():
         test_desc = i["snippet"]["description"].split("#", 1)
         description = test_desc[0]
         title = i["snippet"]["title"]
-        rep_title = {"Highlights": "", "|": "", "2022 FIFA World Cup": "", "Round of 16": "", "Highlight": "", "Quarterfinals": "", "Semifinals": ""}
+        rep_title = {"Highlights": "", "|": "", "2022 FIFA World Cup": "", "Round of 16": "", "Highlight": "", "Quarterfinals": "", "Semifinals": "", "Third Place Game": "", "Final": ""}
         for key, value in rep_title.items():
             title = title.replace(key, value)
         data_dict = {"title": title, "date": i["snippet"]["publishedAt"],
                      "thumbnail": i["snippet"]["thumbnails"]["high"]["url"], "videoid": i["snippet"]["resourceId"]["videoId"], "description": description}
         data_list.append(data_dict)
+    if data["nextPageToken"]:
+        token = data["nextPageToken"]
+        PLAYLIST_PARAMS = {"key": KEY, "part": "snippet", "playlistId": playlistId, "maxResults": "20", "pageToken": token}
+        response = requests.get(PLAYLIST_ENDPOINT, params=PLAYLIST_PARAMS)
+        data = response.json()
+        for i in data["items"]:
+            test_desc = i["snippet"]["description"].split("#", 1)
+            description = test_desc[0]
+            title = i["snippet"]["title"]
+            rep_title = {"Highlights": "", "|": "", "2022 FIFA World Cup": "", "Round of 16": "", "Highlight": "", "Third Place Game": "", "Final": "",
+                         "Quarterfinals": "", "Semifinals": ""}
+            for key, value in rep_title.items():
+                title = title.replace(key, value)
+            data_dict = {"title": title, "date": i["snippet"]["publishedAt"],
+                         "thumbnail": i["snippet"]["thumbnails"]["high"]["url"],
+                         "videoid": i["snippet"]["resourceId"]["videoId"], "description": description}
+            data_list.append(data_dict)
+    else:
+        pass
+
     return data_list
+
 
 
 def index(request):
