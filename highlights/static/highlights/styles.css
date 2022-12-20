@@ -1,9 +1,10 @@
 body {
     background-color: #111111;
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin: 0 0 0 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .searchbar {
@@ -116,10 +117,10 @@ img:hover {
   #indexepisodeimagelist {
     height: auto;
     overflow-y: hidden;
-
   }
+
   #episodeindex {
-    flex: 1;
+    flex: 1 0 auto;
     margin-bottom: 8px;
     margin-right: 0px;
     width: 100%;
@@ -127,9 +128,13 @@ img:hover {
   }
 
   .videos {
+    display: flex;
     flex-direction: column;
   }
 
+  #indexepisodeimage {
+    margin-bottom: 5px;
+  }
 
 }
 
@@ -141,12 +146,12 @@ img:hover {
 
 
 .bottom {
-    position: fixed;
-    bottom:0px;
+    margin-bottom:0px;
+    margin-top: auto;
     background-color: black;
     width: 100%;
     text-align: center;
-    height: 50px;
+    min-height: 50px;
     padding-top: 8px;
 }
 
@@ -154,6 +159,10 @@ img:hover {
     background-color: black;
 }
 
+.marginbottom {
+    min-height: 20px;
+    background-color: #111111;
+}
 
 #description {
     width: 1200px;
