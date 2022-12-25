@@ -132,10 +132,6 @@ img:hover {
     flex-direction: column;
   }
 
-  #indexepisodeimage {
-    margin-bottom: 5px;
-  }
-
 }
 
 #homeicon img {
@@ -217,14 +213,16 @@ li {
     margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;/*center horizontally within parent*/
-    width: 100%;
     max-width: 1640px; /*make it as wide as possible but only up to 1640px*/
+    max-height: 750px;
 }
+
 
 .episodevideos {
     display: flex;
     flex-direction: row;
     background-color: #111111;
+    margin-right: 8px;
 }
 
 #videoplayer {
@@ -232,12 +230,24 @@ li {
     flex-direction: column;
     margin-right: 8px;
     background-color: #111111;
-    width: 50%;
-    flex-grow: 1;
+    max-width: 1200px;
 }
-.player{
-    height: 90%;
+
+.player {
+  position: relative;
+  padding-bottom: 55%;
+  height: 0px;
 }
+
+.iframe {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+
 .descsection {
     margin-top: 8px;
     height: auto;
@@ -245,7 +255,8 @@ li {
 
 #episodeindexrelated {
     background-color: #232323;
-    width: 432px;
+    max-width: 432px;
+    min-height: 755px;
 }
 
 #indexepisodeimagelistrelated {
@@ -262,3 +273,53 @@ li {
 
 }
 
+
+@media (max-width: 1656px) {
+
+  #mainplayepisodebody {
+    margin-left: 10px;
+    margin-right: 6px;
+    max-height: 900px;
+  }
+
+}
+
+@media (max-width: 983px) {
+
+   body {
+    background-color: #232323;
+   }
+
+  #mainplayepisodebody {
+    margin-left: 8px;
+    margin-right: 8px;
+   }
+
+  .episodevideos {
+    flex-wrap: wrap;
+    margin-right: 0px;
+  }
+
+#indexepisodeimagelistrelated {
+    flex-wrap: nowrap;
+    max-height: 180px;
+    overflow-y: hidden;
+    margin-left: 0px;
+
+    }
+
+#episodeindexrelated {
+    max-height: 220px;
+    min-height: auto;
+    max-width: 100%;
+    }
+
+#videoplayer {
+    margin-right: 0px;
+    margin-bottom: 2px;
+  }
+
+.descsection {
+    margin-top: 0px;
+    }
+}
