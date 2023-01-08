@@ -15,12 +15,21 @@
         <div id="episodeindexrelated">
             <div id="indextitle"> Related Videos </div>
             <div id="indexepisodeimagelistrelated">
-            {% for list in data %}
+            {% if page == "worldcup" %}
+                {% for list in data %}
                 <div id="indexepisodeimage">
-                    <div id="videoimage"><a href="{% url 'playepisode' videolink=list.videoid %}"><img src="{{list.thumbnail}}"/></a></div>
+                    <div id="videoimage"><a href="{% url 'worldcup' videolink=list.videoid %}"><img src="{{list.thumbnail}}"/></a></div>
                     <div id="videotitle">{{list.title}} </div>
                 </div>
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                {% for list in data %}
+                <div id="indexepisodeimage">
+                    <div id="videoimage"><a href="{% url 'premierleague' videolink=list.videoid %}"><img src="{{list.thumbnail}}"/></a></div>
+                    <div id="videotitle">{{list.title}} </div>
+                </div>
+                {% endfor %}
+            {% endif %}
             </div>
         </div>
     </div>

@@ -251,6 +251,7 @@ li {
 .descsection {
     margin-top: 8px;
     height: auto;
+    min-width: 1192px;
 }
 
 #episodeindexrelated {
@@ -270,6 +271,7 @@ li {
 #indexepisodeimage {
     margin-top: 25px;
     margin-right: 8px;
+    max-width: 186px;
 
 }
 
@@ -280,6 +282,9 @@ li {
     margin-left: 10px;
     margin-right: 6px;
     max-height: 900px;
+  }
+  .descsection {
+    min-width: 100%;
   }
 
 }
