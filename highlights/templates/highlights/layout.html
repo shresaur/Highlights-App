@@ -16,8 +16,8 @@
     <div id="homeicon">
         <a href="{% url 'index' %}"> <img src="{% static 'highlights/homeicon.png' %}"/> </a>
     </div>
-    <form class="searchbar">
-        <input type="search" name="q" placeholder="What do you want to watch?">
+    <form class="searchbar" action="{% url 'index' %}" method="GET">
+        <input type="search" name="search" placeholder="What do you want to watch?">
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>
 </div>

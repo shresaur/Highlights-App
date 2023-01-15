@@ -90,9 +90,28 @@ def datalistpl():
             nextPage = False
     return data_list
 
+def videolist():
+    viddict = {worldcup: {'title': 'World Cup 2022 Qatar', 'link': 'worldcup/KokKw1esPL8', 'image': '/static/highlights/WC2022.jpg'},
+               premierleague: {'title': 'Premier League 2022/23', 'link': 'premierleague/U0bndsJANvk', 'image': '/static/highlights/PL2223.png'}}
+    return viddict
 
 def index(request):
-    return render(request, "highlights/index.html")
+    if request.GET.get('search', None):
+        search = request.GET.get('search').split()
+        titles = videolist()
+        vidlist = []
+        for term in search:
+            for title in titles:
+                if term in titles[title]['title']:
+                    vidlist.append({"title": titles[title]['title'], "link": titles[title]['link'], "image": titles[title]['image']})
+                else:
+                    pass
+        if vidlist:
+            return render(request, "highlights/search.html", {'vidlist': vidlist})
+        else:
+            return render(request, "highlights/search.html", {'vidlist': vidlist})
+    else:
+        return render(request, "highlights/index.html")
 
 
 def worldcup(request, videolink):
