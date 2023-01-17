@@ -5,7 +5,7 @@
     <div class = "episodevideos">
         <div id="videoplayer">
             <div class="player">
-            <iframe class="iframe" src="https://www.youtube.com/embed/{{link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="iframe" data-vidlink="{{link}}" src="https://www.youtube.com/embed/{{link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="descsection">
                 <div id="maintitle"> {{maintitle}} </div>
@@ -18,15 +18,15 @@
             {% if page == "worldcup" %}
                 {% for list in data %}
                 <div id="indexepisodeimage">
-                    <div id="videoimage"><a href="{% url 'worldcup' videolink=list.videoid %}"><img src="{{list.thumbnail}}"/></a></div>
-                    <div id="videotitle">{{list.title}} </div>
+                    <div id="videoimage"><a href="{% url 'worldcup' videolink=list.videoid %}"><img data-link="{{list.videoid}}" src="{{list.thumbnail}}"/></a></div>
+                    <div id="videotitle" data-title="{{list.title}}" data-desc = "{{list.description}}">{{list.title}} </div>
                 </div>
                 {% endfor %}
             {% else %}
                 {% for list in data %}
                 <div id="indexepisodeimage">
-                    <div id="videoimage"><a href="{% url 'premierleague' videolink=list.videoid %}"><img src="{{list.thumbnail}}"/></a></div>
-                    <div id="videotitle">{{list.title}} </div>
+                    <div id="videoimage"><a href="{% url 'premierleague' videolink=list.videoid %}"><img data-link="{{list.videoid}}" src="{{list.thumbnail}}"/></a></div>
+                    <div id="videotitle" data-title="{{list.title}}" data-desc = "{{list.description}}">{{list.title}} </div>
                 </div>
                 {% endfor %}
             {% endif %}
