@@ -64,11 +64,20 @@ div {
     min-width: 100%;
 }
 
+.fa-solid {
+    float: right;
+    margin-right: 8px;
+}
+.fa-solid:hover {
+    filter: brightness(80%);
+    cursor: pointer;
+
+}
+
 .indexnotice {
     border-top: 1px solid #615f5f;
     padding: 15px;
     font-size: .75em;
-
 }
 
 .indextitlenotice {
