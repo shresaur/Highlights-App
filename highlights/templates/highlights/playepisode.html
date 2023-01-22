@@ -9,8 +9,8 @@
             </div>
             <div class="descsection">
                 <div id="maintitle"> {{maintitle}} </div>
-                <div id="date">Published on {{publishdate}}<i class="fa-solid fa-angle-up" id="toggle"></i></div>
-                <div id="maindesc">{{maindescription}} </div>
+                <div><span id="date">Published on {{publishdate}}</span><i class="fa-solid fa-angle-up" id="toggle"></i></div>
+                <div id="maindesc" class="toggle-notice">{{maindescription}} </div>
             </div>
         </div>
         <div id="episodeindexrelated">
@@ -19,14 +19,14 @@
             {% if page == "worldcup" %}
                 {% for list in data %}
                 <div id="indexepisodeimage">
-                    <div id="videoimage" data-link="{{list.videoid}}" ><!--<a href="{% url 'worldcup' videolink=list.videoid %}">--><img src="{{list.thumbnail}}"/><!--</a>--></div>
+                    <div id="videoimage" data-link="{{list.videoid}}" data-page="{{page}}"><!--<a href="{% url 'worldcup' videolink=list.videoid %}">--><img src="{{list.thumbnail}}"/><!--</a>--></div>
                     <div id="videotitle">{{list.title}} </div>
                 </div>
                 {% endfor %}
             {% else %}
                 {% for list in data %}
                 <div id="indexepisodeimage">
-                    <div id="videoimage" data-link="{{list.videoid}}" ><img src="{{list.thumbnail}}"/></a></div>
+                    <div id="videoimage" data-link="{{list.videoid}}" data-page="{{page}}"><img src="{{list.thumbnail}}"/></a></div>
                     <div id="videotitle">{{list.title}} </div>
                 </div>
                 {% endfor %}

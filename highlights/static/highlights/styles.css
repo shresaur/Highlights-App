@@ -66,6 +66,7 @@ div {
 
 .fa-solid {
     float: right;
+    margin-right: 8px;
 }
 .fa-solid:hover {
     filter: brightness(80%);
@@ -135,6 +136,7 @@ img {
 
 img:hover {
     filter: brightness(80%);
+    cursor: pointer;
 }
 
 @media (max-width: 1312px) {

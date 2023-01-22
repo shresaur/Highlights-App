@@ -3,9 +3,9 @@
 //toggle notice thread
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.fa-solid').onclick = function() {
-        const x = document.querySelector('.indexnotice')
+        const x = document.querySelector('.toggle-notice')
         const y = document.getElementById("toggle")
-        if (x.style.display ==="none") {
+        if (x.style.display === "none") {
             x.style.display = "block";
             y.className = "fa-solid fa-angle-up";
             }
@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //load vids without loading entire webpage
 
-function showSection(section) {
-    fetch(`/worldcuptest/${section}`)
+function showSection(section, page) {
+    fetch(`/watch/${page}-${section}`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
@@ -36,6 +36,7 @@ function showSection(section) {
             });
         document.querySelector('#maintitle').innerHTML = data.title;
         document.querySelector('#maindesc').innerHTML = data.description;
+        document.querySelector('#date').innerHTML = `Published on ${data.date}`
        });
     }
 
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const el1 = document.querySelectorAll('#videoimage')
     el1.forEach(function(el1) {
         el1.onclick = function() {
-            showSection(el1.dataset.link)
+            showSection(el1.dataset.link, el1.dataset.page)
         }
     });
 });
