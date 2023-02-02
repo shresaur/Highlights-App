@@ -3,17 +3,17 @@
 
 {% block body %}
 <div id="searchbody">
-    <div id="searchheader">Search Results</div>
-    <div id="searchlist">
+  <div id="searchheader">Search Results</div>
+  <div id="searchlist">
     {% if vidlist %}
-        {% for list in vidlist %}
-        <div id="indexepisodeimage">
-            <div id="videoimage"><a href="{{list.link}}"><img src="{{list.image}}"/></a></div>
-            <div id="videotitle">{{list.title}}</div>
-        </div>
-        {% endfor %}
-    {% endif %}
+    {% for list in vidlist %}
+    <div id="indexepisodeimage">
+      <div id="videoimage"><a href="{{list.link}}"><img src="{{list.image}}" /></a></div>
+      <div id="videotitle">{{list.title}}</div>
     </div>
+    {% endfor %}
+    {% endif %}
+  </div>
 </div>
 
 {% endblock body %}

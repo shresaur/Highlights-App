@@ -1,384 +1,382 @@
 body {
-    background-color: #111111;
-    margin: 0 0 0 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+	background-color: #111111;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	margin: 0 0 0 0;
+	padding: 0;
 }
 
 .searchbar {
-    display:flex;
-
+	display: flex;
 }
+
 input {
-    width: 300px;
-    height: 30px;
-    background-color: #3c3c3c;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    border: none;
-    color: grey;
-    padding-left: 10px;
-    border-radius: 3px 0 0 3px;
+	background-color: #3c3c3c;
+	border: none;
+	border-radius: 3px 0 0 3px;
+	color: grey;
+	height: 30px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-top: 10px;
+	padding-left: 10px;
+	width: 300px;
 }
 
 button {
-    height: 30px;
-    margin-left: 0px;
-    margin-top: 10px;
-    border: none;
-    width: 15%;
-    background-color: #555;
-    border-radius: 0 3px 3px 0;
+	background-color: #555;
+	border: none;
+	border-radius: 0 3px 3px 0;
+	height: 30px;
+	margin-left: 0px;
+	margin-top: 10px;
+	width: 15%;
 }
 
 div {
-    background-color: #232323;
-    color: white;
-    font-family: "Montserrat", sans-serif;
+	background-color: #232323;
+	color: white;
+	font-family: "Montserrat", sans-serif;
 }
 
 .top {
-    display: flex;
-    padding: 0px;
-    width: 100%;
+	display: flex;
+	padding: 0px;
+	width: 100%;
 }
 
-
 #episodeindex {
-    background-color: #232323;
-    margin-right:8px;
-    flex: 1 0 432px;
+	background-color: #232323;
+	flex: 1 0 432px;
+	margin-right: 8px;
 }
 
 .videos {
-    display: flex;
-    background-color: #111111;
-
+	background-color: #111111;
+	display: flex;
 }
-.indexnoticethread{
-    margin-top: 8px;
-    margin-bottom: 8px;
-    min-width: 100%;
+
+.indexnoticethread {
+	margin-bottom: 8px;
+	margin-top: 8px;
+	min-width: 100%;
 }
 
 .fa-solid {
-    float: right;
-    margin-right: 8px;
+	float: right;
+	margin-right: 8px;
 }
-.fa-solid:hover {
-    filter: brightness(80%);
-    cursor: pointer;
 
+.fa-solid:hover {
+	cursor: pointer;
+	filter: brightness(80%);
 }
 
 .indexnotice {
-    border-top: 1px solid #615f5f;
-    padding: 15px;
-    font-size: .75em;
+	border-top: 1px solid #615f5f;
+	font-size: .75em;
+	padding: 15px;
 }
 
 .indextitlenotice {
-    padding: 8px 0 15px 15px;
-    font-size: 15px;
-    font-weight: 600;
+	font-size: 15px;
+	font-weight: 600;
+	padding: 8px 0 15px 15px;
 }
 
 #mainbody {
-    margin: 0 auto; /*center horizontally within parent*/
-    background-color: #111111;
-    display:flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1312px; /*make it as wide as possible but only up to 1312px*/
-
+	background-color: #111111;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	max-width: 1312px;
+	width: 100%;
 }
 
 #indextitle {
-    border-bottom: 1px solid #FFBF00;
-    padding: 8px;
-    font-size: 15px;
-    font-weight: 600;
+	border-bottom: 1px solid #FFBF00;
+	font-size: 15px;
+	font-weight: 600;
+	padding: 8px;
 }
 
 #videoimage {
-    overflow: hidden;
-    width:186px;
-    height:105px;
+	height: 105px;
+	overflow: hidden;
+	width: 186px;
 }
-#indeximg {
-    width:100%;
-    height: 100%;
-    transition: 0.5s all ease-in-out;
 
+#indeximg {
+	height: 100%;
+	transition: 0.5s all ease-in-out;
+	width: 100%;
 }
 
 #indeximg:hover {
-    filter: brightness(80%);
-    transform: scale(1.1);
+	filter: brightness(80%);
+	transform: scale(1.1);
 }
 
 #indexepisodeimagelist {
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y:scroll;
-    margin-left: 15px;
-    height: 500px;
+	display: flex;
+	flex-wrap: wrap;
+	height: 500px;
+	margin-left: 15px;
+	overflow-y: scroll;
 }
 
 img {
-    width:100%;
-    height:100%;
-    border-radius: 2px;
+	border-radius: 2px;
+	height: 100%;
+	width: 100%;
 }
 
 img:hover {
-    filter: brightness(80%);
-    cursor: pointer;
+	cursor: pointer;
+	filter: brightness(80%);
 }
 
 @media (max-width: 1312px) {
-  #indexepisodeimagelist {
-    height: auto;
-    overflow-y: hidden;
-  }
-
-  #episodeindex {
-    flex: 1 0 auto;
-    margin-bottom: 8px;
-    margin-right: 0px;
-    width: 100%;
-    overflow-x: scroll;
-  }
-
-  .videos {
-    display: flex;
-    flex-direction: column;
-  }
-
+	#indexepisodeimagelist {
+		height: auto;
+		overflow-y: hidden;
+	}
+	#episodeindex {
+		flex: 1 0 auto;
+		margin-bottom: 8px;
+		margin-right: 0px;
+		overflow-x: scroll;
+		width: 100%;
+	}
+	.videos {
+		display: flex;
+		flex-direction: column;
+	}
 }
 
 #homeicon img {
-    height:30px;
-    width:30px;
-    padding: 10px 0px 10px 10px;
+	height: 30px;
+	padding: 10px 0px 10px 10px;
+	width: 30px;
 }
 
-
 .bottom {
-    margin-bottom:0px;
-    margin-top: auto;
-    background-color: black;
-    width: 100%;
-    text-align: center;
-    min-height: 50px;
-    padding-top: 8px;
+	background-color: black;
+	margin-bottom: 0px;
+	margin-top: auto;
+	min-height: 50px;
+	padding-top: 8px;
+	text-align: center;
+	width: 100%;
 }
 
 #bottomnotice {
-    background-color: black;
+	background-color: black;
 }
 
 .marginbottom {
-    min-height: 20px;
-    background-color: #111111;
+	background-color: #111111;
+	min-height: 20px;
 }
 
 #description {
-    width: 1200px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    height: 150px;
-
+	height: 150px;
+	margin-bottom: 8px;
+	margin-top: 8px;
+	width: 1200px;
 }
 
 #videotitle {
-    padding-left: 5px;
-    font-size: .75em;
-    font-weight: bold;
+	font-size: .75em;
+	font-weight: bold;
+	padding-left: 5px;
 }
 
 .nav-frame {
-    margin-top: 8px;
-    background-color: #111111;
-    border-top: 1px solid #615f5f;
-    border-bottom: 1px solid #615f5f;
-    margin-bottom: 10px;
-    width: 100%;
+	background-color: #111111;
+	border-bottom: 1px solid #615f5f;
+	border-top: 1px solid #615f5f;
+	margin-bottom: 10px;
+	margin-top: 8px;
+	width: 100%;
 }
 
 ul {
-    list-style-type: none;
-    text-align: center;
-    margin-top: 4px;
-    margin-bottom: 4px;
+	list-style-type: none;
+	margin-bottom: 4px;
+	margin-top: 4px;
+	text-align: center;
 }
 
 li {
-    display: inline;
-    margin-right: 20px;
+	display: inline;
+	margin-right: 20px;
 }
 
 #maintitle {
-    padding: 10px;
-    border-bottom: 1px solid #615f5f;
+	border-bottom: 1px solid #615f5f;
+	padding: 10px;
 }
 
-#maindesc, #date {
-    padding: 10px;
-    font-size: .85em;
+#maindesc,
+#date {
+	font-size: .85em;
+	padding: 10px;
 }
-
-/*playepisode*/
 
 #mainplayepisodebody {
-    background-color: #111111;
-    margin-top: 8px;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;/*center horizontally within parent*/
-    max-width: 1640px; /*make it as wide as possible but only up to 1640px*/
-    max-height: 750px;
+	background-color: #111111;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 8px;
+	max-height: 750px;
+	max-width: 1640px;
 }
 
-
 .episodevideos {
-    display: flex;
-    flex-direction: row;
-    background-color: #111111;
-    margin-right: 8px;
+	background-color: #111111;
+	display: flex;
+	flex-direction: row;
+	margin-right: 8px;
 }
 
 #videoplayer {
-    display: flex;
-    flex-direction: column;
-    margin-right: 8px;
-    background-color: #111111;
-    max-width: 1200px;
+	background-color: #111111;
+	display: flex;
+	flex-direction: column;
+	margin-right: 8px;
+	max-width: 1200px;
 }
 
 .player {
-  position: relative;
-  padding-bottom: 55%;
-  height: 0px;
+	height: 0px;
+	padding-bottom: 55%;
+	position: relative;
 }
 
 .iframe {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
+	height: 100%;
+	left: 0px;
+	position: absolute;
+	top: 0px;
+	width: 100%;
 }
 
-
 .descsection {
-    margin-top: 8px;
-    height: auto;
-    min-width: 1192px;
+	height: auto;
+	margin-top: 8px;
+	min-width: 1192px;
 }
 
 #episodeindexrelated {
-    background-color: #232323;
-    max-width: 432px;
-    min-height: 755px;
+	background-color: #232323;
+	max-width: 432px;
+	min-height: 755px;
 }
 
 #indexepisodeimagelistrelated {
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y:scroll;
-    margin-left: 15px;
-    height: 714px;
+	display: flex;
+	flex-wrap: wrap;
+	height: 714px;
+	margin-left: 15px;
+	overflow-y: scroll;
 }
 
 #indexepisodeimage {
-    margin-top: 25px;
-    margin-right: 8px;
-    margin-left: 2px;
-    max-width: 186px;
-
+	margin-left: 2px;
+	margin-right: 8px;
+	margin-top: 25px;
+	max-width: 186px;
 }
 
-
 @media (max-width: 1656px) {
-
-  #mainplayepisodebody {
-    margin-left: 10px;
-    margin-right: 6px;
-    max-height: 900px;
-  }
-  .descsection {
-    min-width: 100%;
-  }
-
+	#mainplayepisodebody {
+		margin-left: 10px;
+		margin-right: 6px;
+		max-height: 900px;
+	}
+	.descsection {
+		min-width: 100%;
+	}
 }
 
 @media (max-width: 983px) {
-
-   body {
-    background-color: #232323;
-   }
-
-  #mainplayepisodebody {
-    margin-left: 8px;
-    margin-right: 8px;
-   }
-
-  .episodevideos {
-    flex-wrap: wrap;
-    margin-right: 0px;
-  }
-
-#indexepisodeimagelistrelated {
-    flex-wrap: nowrap;
-    max-height: 180px;
-    overflow-y: hidden;
-    margin-left: 0px;
-
-    }
-
-#episodeindexrelated {
-    max-height: 220px;
-    min-height: auto;
-    max-width: 100%;
-    }
-
-#videoplayer {
-    margin-right: 0px;
-    margin-bottom: 2px;
-  }
-
-.descsection {
-    margin-top: 0px;
-    }
+	body {
+		background-color: #232323;
+	}
+	#mainplayepisodebody {
+		margin-left: 8px;
+		margin-right: 8px;
+	}
+	.episodevideos {
+		flex-wrap: wrap;
+		margin-right: 0px;
+	}
+	#indexepisodeimagelistrelated {
+		flex-wrap: nowrap;
+		margin-left: 0px;
+		max-height: 180px;
+		overflow-y: hidden;
+	}
+	#episodeindexrelated {
+		max-height: 220px;
+		max-width: 100%;
+		min-height: auto;
+	}
+	#videoplayer {
+		margin-bottom: 2px;
+		margin-right: 0px;
+	}
+	.descsection {
+		margin-top: 0px;
+	}
 }
 
-/*search*/
 #searchbody {
-    margin: 0 auto; /*center horizontally within parent*/
-    margin-top: 8px;
-    padding: 20px;
-    background-color: #232323;
-    display:flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1312px; /*make it as wide as possible but only up to 1312px*/
-
+	background-color: #232323;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	margin-top: 8px;
+	max-width: 1312px;
+	padding: 20px;
+	width: 100%;
 }
 
 #searchlist {
-    display:flex;
+    display: flex;
     flex-direction: row;
     padding-left: 40px;
     padding-right: 40px;
-
 }
 
 #searchheader {
     border-bottom: solid;
 }
 
-input:focus {outline:none;}
+input:focus {
+    outline: none;
+}
+
+/*progressbar*/
+.imageprogress {
+    height: 100%;
+}
+
+.outsideprogress {
+	background-color: transparent;
+	height: 3px;
+	margin-bottom: 1px;
+	margin-top: -7px;
+	opacity: 70%;
+	overflow: hidden;
+	width: 186px;
+}
+
+.episodeprogressbar {
+	background-color: #523CED;
+	height: 100%;
+	width: 0%;
+}

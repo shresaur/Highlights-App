@@ -2,37 +2,46 @@
 
 {% block body %}
 <div id="mainplayepisodebody">
-    <div class = "episodevideos">
-        <div id="videoplayer">
-            <div class="player">
-            <iframe class="iframe" data-vidlink="{{link}}" src="https://www.youtube.com/embed/{{link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="descsection">
-                <div id="maintitle"> {{maintitle}} </div>
-                <div><span id="date">Published on {{publishdate}}</span><i class="fa-solid fa-angle-up" id="toggle"></i></div>
-                <div id="maindesc" class="toggle-notice">{{maindescription}} </div>
-            </div>
-        </div>
-        <div id="episodeindexrelated">
-            <div id="indextitle"> Related Videos </div>
-            <div id="indexepisodeimagelistrelated">
-            {% if page == "worldcup" %}
-                {% for list in data %}
-                <div id="indexepisodeimage">
-                    <div id="videoimage" data-link="{{list.videoid}}" data-page="{{page}}"><!--<a href="{% url 'worldcup' videolink=list.videoid %}">--><img src="{{list.thumbnail}}"/><!--</a>--></div>
-                    <div id="videotitle">{{list.title}} </div>
-                </div>
-                {% endfor %}
-            {% else %}
-                {% for list in data %}
-                <div id="indexepisodeimage">
-                    <div id="videoimage" data-link="{{list.videoid}}" data-page="{{page}}"><img src="{{list.thumbnail}}"/></a></div>
-                    <div id="videotitle">{{list.title}} </div>
-                </div>
-                {% endfor %}
-            {% endif %}
-            </div>
-        </div>
+  <div class="episodevideos">
+    <div id="videoplayer">
+      <div class="player">
+        <iframe class="iframe" id="ytplayer" data-vidlink="{{link}}" src="https://www.youtube.com/embed/{{link}}?enablejsapi=1"
+          frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="descsection">
+        <div id="maintitle"> {{maintitle}} </div>
+        <div><span id="date">Published on {{publishdate}}</span><i class="fa-solid fa-angle-up" id="toggle"></i></div>
+        <div id="maindesc" class="toggle-notice">{{maindescription}} </div>
+      </div>
+      <p id="displaytest">test</p>
     </div>
+    <div id="episodeindexrelated">
+      <div id="indextitle"> Related Videos </div>
+      <div id="indexepisodeimagelistrelated">
+        {% if page == "worldcup" %}
+        {% for list in data %}
+        <div id="indexepisodeimage">
+          <div id="videoimage" data-link="{{list.videoid}}" data-page="{{page}}">
+            <!--<a href="{% url 'worldcup' videolink=list.videoid %}">--><img src="{{list.thumbnail}}" /><!--</a>-->
+          </div>
+          <div id="videotitle">{{list.title}} </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        {% for list in data %}
+        <div id="indexepisodeimage">
+          <div id="videoimage" data-link="{{list.videoid}}" data-page="{{page}}">
+            <img class="imageprogress" src="{{list.thumbnail}}" />
+            <div class="outsideprogress">
+              <div class="episodeprogressbar" data-link="{{list.videoid}}"></div>
+            </div>
+          </div>
+          <!--  <div id="videotitle">{{list.title}} </div> -->
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock body %}

@@ -1,4 +1,33 @@
+// progressbar
 
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var player;
+function onYouTubeIframeAPIReady() {
+   player = new YT.Player("ytplayer", {
+    events: {
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+function onPlayerStateChange(event) {
+
+  display = document.getElementById('displaytest');
+  display.innerHTML = (player.getCurrentTime()/player.getDuration() * 100) + "%";
+  let el2 = document.querySelector('.iframe');
+  const el1 = document.querySelectorAll('.episodeprogressbar');
+  el1.forEach(function(el1) {
+  link = el1.dataset.link
+  if (link === el2.dataset.vidlink)
+    el1.style.width = display.innerHTML;
+  //else
+    //el1.style.width = '0%';
+  });
+}
 
 //toggle notice thread
 document.addEventListener('DOMContentLoaded', function() {
@@ -24,7 +53,7 @@ function showSection(section, page) {
     .then(data => {
         console.log(data)
         let el2 = document.querySelector('.iframe');
-        el2.src = `https://www.youtube.com/embed/${section}`;
+        //el2.src = `https://www.youtube.com/embed/${section}?enablejsapi=1`;
         el2.dataset.vidlink = section
         const el1 = document.querySelectorAll('#videoimage');
         el1.forEach(function(el1) { //highlights current playing video from the playlist
@@ -45,7 +74,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const el1 = document.querySelectorAll('#videoimage')
     el1.forEach(function(el1) {
         el1.onclick = function() {
-            showSection(el1.dataset.link, el1.dataset.page)
+        player.loadVideoById(el1.dataset.link)
+        showSection(el1.dataset.link, el1.dataset.page);
         }
     });
 });
+
+

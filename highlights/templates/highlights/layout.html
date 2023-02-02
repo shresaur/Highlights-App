@@ -3,31 +3,34 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Run of Play</title>
-    <link rel="stylesheet" href="{% static 'highlights/styles.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/0d474952c4.js" crossorigin="anonymous"></script>
-    <script src="{% static 'highlights/script.js' %}"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+  <title>Run of Play</title>
+  <link rel="stylesheet" href="{% static 'highlights/styles.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/0d474952c4.js" crossorigin="anonymous"></script>
+  <script src="{% static 'highlights/script.js' %}"></script>
 </head>
+
 <body>
-<div class="top">
+  <div class="top">
     <div id="homeicon">
-        <a href="{% url 'index' %}"> <img src="{% static 'highlights/homeicon.png' %}"/> </a>
+      <a href="{% url 'index' %}"> <img src="{% static 'highlights/homeicon.png' %}" /> </a>
     </div>
     <form class="searchbar" action="{% url 'index' %}" method="GET">
-        <input type="search" name="search" placeholder="What do you want to watch?">
-        <button type="submit"><i class="fa fa-search"></i></button>
+      <input type="search" name="search" placeholder="What do you want to watch?">
+      <button type="submit"><i class="fa fa-search"></i></button>
     </form>
-</div>
-{% block body %}
-{% endblock body %}
-<!--<div class="marginbottom"></div>-->
-<div class="bottom">
+  </div>
+  {% block body %}
+  {% endblock body %}
+  <!--<div class="marginbottom"></div>-->
+  <div class="bottom">
     <div id="bottomnotice">This site is invite only. Please do not share.</div>
-</div>
+  </div>
 </body>
+
 </html>
