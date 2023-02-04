@@ -14,19 +14,48 @@ function onYouTubeIframeAPIReady() {
   });
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    const el1 = document.querySelectorAll('#videoimage');
+    let resumeTime = 0;
+    el1.forEach(function(el1) {
+        el1.onclick = function() {
+            player.pauseVideo();
+            if (el1.dataset.link in savedTimes) {
+                resumeTime = savedTimes[el1.dataset.link];
+                console.log(resumeTime)
+            } else {
+                resumeTime = 0;
+            }
+            player.cueVideoById({ 'videoId': el1.dataset.link, 'startSeconds': resumeTime });
+            player.playVideo();
+            showSection(el1.dataset.link, el1.dataset.page);
+        };
+    });
+});
+
+
+let savedWidths = JSON.parse(localStorage.getItem("savedWidths")) || {};
+let savedTimes = JSON.parse(localStorage.getItem("savedTimes")) || {};
+
 function onPlayerStateChange(event) {
 
   display = document.getElementById('displaytest');
-  display.innerHTML = (player.getCurrentTime()/player.getDuration() * 100) + "%";
   let el2 = document.querySelector('.iframe');
   const el1 = document.querySelectorAll('.episodeprogressbar');
   el1.forEach(function(el1) {
-  link = el1.dataset.link
-  if (link === el2.dataset.vidlink)
-    el1.style.width = display.innerHTML;
-  //else
-    //el1.style.width = '0%';
+      link = el1.dataset.link
+      if (link === el2.dataset.vidlink ) {
+        pauseTime = player.getCurrentTime();
+        watchedPercent = (player.getCurrentTime()/player.getDuration() * 100) + "%";
+        savedWidths[link] = watchedPercent;
+        savedTimes[link] = pauseTime;
+        el1.style.width = watchedPercent;
+      } else {
+        el1.style.width = savedWidths[link] || '0%';
+      }
   });
+  localStorage.setItem("savedWidths", JSON.stringify(savedWidths));
+  localStorage.setItem("savedTimes", JSON.stringify(savedTimes));
 }
 
 //toggle notice thread
@@ -59,7 +88,7 @@ function showSection(section, page) {
         el1.forEach(function(el1) { //highlights current playing video from the playlist
             link = el1.dataset.link
             if (link == section)
-                el1.style.outline = 'solid orange 2px'
+                el1.style.outline = 'solid #CF9FFF 2px'
             else
                 el1.style.outline = 'none'
             });
@@ -68,16 +97,5 @@ function showSection(section, page) {
         document.querySelector('#date').innerHTML = `Published on ${data.date}`
        });
     }
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const el1 = document.querySelectorAll('#videoimage')
-    el1.forEach(function(el1) {
-        el1.onclick = function() {
-        player.loadVideoById(el1.dataset.link)
-        showSection(el1.dataset.link, el1.dataset.page);
-        }
-    });
-});
 
 
