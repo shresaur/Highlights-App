@@ -3,8 +3,7 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("worldcup/<str:videolink>", views.worldcup, name="worldcup"),
     path("watch/<slug:videolink>", views.watch, name="watch"),
-    path("premierleague/<str:videolink>", views.premierleague, name="premierleague"),
-    path("comingsoon", views.comingsoon, name="comingsoon"),
+    path("premier_league/<str:videolink>", views.premier_league, name="premier_league"),
+    path("coming_soon", views.coming_soon, name="coming_soon"),
 ]
