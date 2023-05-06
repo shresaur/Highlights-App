@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ["*"]
 SECURE_REFERRER_POLICY = 'no-referrer-when-downgrade'
 
 INSTALLED_APPS = [
-    'highlights',
+    'highlights.apps.HighlightsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

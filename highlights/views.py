@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import VideoList
 from datetime import datetime
 import requests
 import json
@@ -75,8 +76,6 @@ def index(request):
                 if term in titles[title]['title']:
                     vid_list.append({"title": titles[title]['title'], "link": titles[title]['link'],
                                     "image": titles[title]['image']})
-                else:
-                    pass
         if vid_list:
             return render(request, "highlights/search.html", {'vidlist': vid_list})
         else:
