@@ -8,6 +8,7 @@ class VideoList(models.Model):
     link = models.CharField(max_length=100)
     image = models.CharField(max_length=50)
     active = models.CharField(max_length=1)
+    objects = models.Manager()
 
     def __str__(self):
         return self.title

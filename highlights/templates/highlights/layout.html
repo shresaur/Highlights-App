@@ -20,8 +20,9 @@
     <div id="homeicon">
       <a href="{% url 'index' %}"> <img src="{% static 'highlights/homeicon.png' %}" /> </a>
     </div>
-    <form class="searchbar" action="{% url 'index' %}" method="GET">
-      <input type="search" name="search" placeholder="What do you want to watch?">
+    <form class="searchbar" action="{% url 'index' %}" method="POST">
+      {% csrf_token %}
+      <input type="text" name="search" placeholder="What do you want to watch?">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>

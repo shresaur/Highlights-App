@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import VideoList
+from highlights.models import VideoList
 from datetime import datetime
 import requests
 import json
@@ -59,27 +59,15 @@ video_data_pl = playlist.get_video_data(title="| PREMIER LEAGUE HIGHLIGHTS |")
 
 
 
-def video_list():
-    vid_dict = {premier_league: {'title': 'Premier League 2022/23', 'link': 'premierleague/U0bndsJANvk',
-                               'image': '/static/highlights/PL2223.png'}}
-    return vid_dict
-
-
 # Homepage
 def index(request):
-    if request.GET.get('search', None):
-        search = request.GET.get('search').split()
-        titles = video_list()
-        vid_list = []
-        for term in search:
-            for title in titles:
-                if term in titles[title]['title']:
-                    vid_list.append({"title": titles[title]['title'], "link": titles[title]['link'],
-                                    "image": titles[title]['image']})
-        if vid_list:
-            return render(request, "highlights/search.html", {'vidlist': vid_list})
-        else:
-            return render(request, "highlights/search.html", {'vidlist': vid_list})
+    if request.method == "POST":
+        search = request.POST.get('search', '').split(' ')
+        # Query the database for titles that include the list of search terms
+        matching_videos = VideoList.objects.filter(title__icontains=search[0])
+        for term in search[1:]:
+            matching_videos = matching_videos.filter(title__icontains=term)
+        return render(request, "highlights/search.html", {'vidlist': matching_videos})
     else:
         return render(request, "highlights/index.html")
 
