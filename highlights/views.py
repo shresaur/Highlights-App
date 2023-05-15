@@ -10,7 +10,7 @@ import json
 KEY = "AIzaSyBs2ThvW9nFTDV4nr90t6_v2eReVoZHgbU"
 PLAYLIST_ENDPOINT = 'https://www.googleapis.com/youtube/v3/playlistItems'
 VIDEO_ENDPOINT = "https://www.googleapis.com/youtube/v3/videos"
-PL_PLAYLIST_ID = "PLXEMPXZ3PY1hjUnuEJqxxYoRQLOEw6WFj"
+
 
 
 class YouTubePlaylist:
@@ -53,11 +53,6 @@ class YouTubePlaylist:
                 data_list.append(data_dict)
         return data_list
 
-# Get premier league playlist data
-playlist = YouTubePlaylist(playlist_id=PL_PLAYLIST_ID, api_key=KEY)
-video_data_pl = playlist.get_video_data(title="| PREMIER LEAGUE HIGHLIGHTS |")
-
-
 
 # Homepage
 def index(request):
@@ -72,16 +67,62 @@ def index(request):
         return render(request, "highlights/index.html")
 
 
-# Landing page for specific sport/tournament.
-def premier_league(request, videolink):
-    main_title = "Crystal Palace v. Arsenal"
-    main_desc = "Gabriel Martinelli netted the first goal of the 2022-23 Premier League campaign to lift Arsenal" \
-                " to a season-opening victory against Crystal Palace."
-    date = "Aug 5, 2022"
-    info_list = video_data_pl
-    return render(request, "highlights/playepisode.html",
-                  {"link": videolink, "data": info_list, "maintitle": main_title, "maindescription": main_desc,
-                   "publishdate": date, "page": "PL"})
+# Get premier league playlist data
+PL_PLAYLIST_ID = "PLXEMPXZ3PY1hjUnuEJqxxYoRQLOEw6WFj"
+playlist = YouTubePlaylist(playlist_id=PL_PLAYLIST_ID, api_key=KEY)
+# Only get videos from playlist that has the specific title
+video_data_pl = playlist.get_video_data(title="| PREMIER LEAGUE HIGHLIGHTS |")
+
+SPORTS_INFO = {
+    "PL": {"video_data": video_data_pl, "params": {"key": KEY, "part": "snippet"}},
+    # Add more sports here
+}
+
+
+# Function to get title and description of a video based on sport
+def get_pl_video_info(latest_video):
+    title = latest_video["snippet"]["title"].split("|", 1)[0]
+    description = latest_video["snippet"]["description"].split("#", 1)[0]
+    return title, description
+
+
+# Add more functions here for each sport
+SPORT_FUNCTIONS = {
+    "PL": get_pl_video_info,
+    # Add more sports here
+}
+
+
+def sport_highlights(request, sport):
+    if sport not in SPORTS_INFO:
+        # Handle invalid sport error
+        return HttpResponse("Invalid sport")
+
+    sport_info = SPORTS_INFO[sport]
+    video_data = sport_info["video_data"]
+    video_link = video_data[0]["videoid"]
+    params = sport_info["params"]
+    params["id"] = video_link
+
+    response = requests.get(VIDEO_ENDPOINT, params=params)
+    data = response.json()
+    latest_video = data["items"][0]
+
+    # Call the appropriate function based on the sport parameter
+    title, description = SPORT_FUNCTIONS[sport](latest_video)
+
+    publish_date = datetime.strptime(latest_video["snippet"]["publishedAt"], "%Y-%m-%dT%H:%M:%SZ").strftime("%B %d, %Y")
+
+    context = {
+        "link": video_link,
+        "data": video_data,
+        "maintitle": title,
+        "maindescription": description,
+        "publishdate": publish_date,
+        "page": sport.upper(),
+    }
+
+    return render(request, "highlights/playepisode.html", context)
 
 
 # Returns coming soon page for a sport/tournament that does not have highlights yet.
@@ -90,27 +131,21 @@ def coming_soon(request):
 
 
 # Get the details only for specific video clicked by user / request comes with the help of JS.
-def watch(request, videolink):
-    video_link_temp = videolink.split('-', 2)
-    prefix = video_link_temp[0]
-    video_link_test = video_link_temp[1]
-    YOUTUBE_PARAMS = {"key": KEY, "part": "snippet", "id": video_link_test}
-
-    response = requests.get(VIDEO_ENDPOINT, params=YOUTUBE_PARAMS)
+def watch(request, video_link):
+    video_info = video_link.split('-', 2)
+    prefix, video_id = video_info[0], video_info[1]
+    params = {"key": KEY, "part": "snippet", "id": video_id}
+    response = requests.get(VIDEO_ENDPOINT, params=params)
     data = response.json()
-    data_dict = {}
-    for i in data["items"]:
-        if prefix == 'PL':
-            test_title = i["snippet"]["title"].split("|", 1)
-            title = test_title[0]
-        else:
-            test_title = i["snippet"]["title"].split("Highlights", 1)
-            title = test_title[0]
-        test_desc = i["snippet"]["description"].split("#", 1)
-        description = test_desc[0]
-        date_string = i["snippet"]["publishedAt"]
-        date_object = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%SZ")
-        publish_date = date_object.strftime("%B %d, %Y")
-        data_dict = {"title": title, "date": publish_date, "description": description}
+    video_detail = data["items"][0]
+    title, description = "", ""
+    if prefix == 'PL':
+        print(prefix)
+        title, description = get_pl_video_info(video_detail)
+    else:
+        pass  # Call another sport function to get the title and description
+
+    publish_date = datetime.strptime(video_detail["snippet"]["publishedAt"], "%Y-%m-%dT%H:%M:%SZ").strftime("%B %d, %Y")
+    data_dict = {"title": title, "date": publish_date, "description": description}
 
     return HttpResponse(json.dumps(data_dict))
