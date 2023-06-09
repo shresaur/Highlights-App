@@ -49,7 +49,8 @@ class YouTubePlaylist:
         for i in data.get("items", []):
             if not title or title in i["snippet"]["title"]:
                 data_dict = {"thumbnail": i["snippet"]["thumbnails"]["high"]["url"],
-                             "videoid": i["snippet"]["resourceId"]["videoId"]}
+                             "videoid": i["snippet"]["resourceId"]["videoId"],
+                             "title": i["snippet"]["title"].split("|", 1)[0]}
                 data_list.append(data_dict)
         return data_list
 
@@ -100,7 +101,7 @@ def sport_highlights(request, sport):
 
     sport_info = SPORTS_INFO[sport]
     video_data = sport_info["video_data"]
-    video_link = video_data[0]["videoid"]
+    video_link = video_data[0]["videoid"]  # Get the latest video from the playlist
     params = sport_info["params"]
     params["id"] = video_link
 
@@ -140,7 +141,6 @@ def watch(request, video_link):
     video_detail = data["items"][0]
     title, description = "", ""
     if prefix == 'PL':
-        print(prefix)
         title, description = get_pl_video_info(video_detail)
     else:
         pass  # Call another sport function to get the title and description

@@ -17,20 +17,6 @@
     <div id="episodeindexrelated">
       <div id="indextitle"> Related Videos </div>
       <div id="indexepisodeimagelistrelated">
-        {% if page == "worldcup" %}
-        {% for list in data %}
-        <div id="indexepisodeimage">
-          <div id="videoimage" data-link="{{list.videoid}}" data-page="{{page}}">
-            <!--<a href="{% url 'worldcup' videolink=list.videoid %}">-->
-            <img class="imageprogress" src="{{list.thumbnail}}" />
-            <div class="outsideprogress">
-              <div class="episodeprogressbar" data-link="{{list.videoid}}"></div>
-            </div>
-          </div>
-          <div id="videotitle">{{list.title}} </div>
-        </div>
-        {% endfor %}
-        {% else %}
         {% for list in data %}
         <div id="indexepisodeimage">
           <div id="videoimage" data-link="{{list.videoid}}" data-page="{{page}}">
@@ -39,10 +25,9 @@
               <div class="episodeprogressbar" data-link="{{list.videoid}}"></div>
             </div>
           </div>
-          <!--  <div id="videotitle">{{list.title}} </div> -->
+          <div id="videotitle">{{list.title}}</div>
         </div>
         {% endfor %}
-        {% endif %}
       </div>
     </div>
   </div>
