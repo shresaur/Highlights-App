@@ -15,6 +15,13 @@ VIDEO_ENDPOINT = "https://www.googleapis.com/youtube/v3/videos"
 
 class YouTubePlaylist:
     def __init__(self, playlist_id, api_key):
+        """
+        Initializes the YouTubePlaylist class.
+
+        Parameters:
+        - playlist_id (str): The ID of the YouTube playlist.
+        - api_key (str): Your API key for the YouTube Data API.
+        """
         self.playlist_id = playlist_id
         self.api_key = api_key
         self.playlist_endpoint = 'https://www.googleapis.com/youtube/v3/playlistItems'
@@ -31,6 +38,7 @@ class YouTubePlaylist:
         Each dictionary contains the following keys:
         - thumbnail (str): The URL of the video's thumbnail image.
         - videoid (str): The ID of the YouTube video.
+        - title (str): The title of the YouTube video.
         """
         playlist_params = {"key": self.api_key, "part": "snippet", "playlistId": self.playlist_id, "maxResults": "64"}
         response = requests.get(self.playlist_endpoint, params=playlist_params)
@@ -45,6 +53,16 @@ class YouTubePlaylist:
         return video_data
 
     def _parse_data(self, data, title=None):
+        """
+        Parse the JSON response and extract relevant video data.
+
+        Parameters:
+        - data (dict): The JSON response containing video data.
+        - title (str, optional): If specified, only videos with titles containing this string will be included.
+
+        Returns:
+        A list of dictionaries containing video data.
+        """
         data_list = []
         for i in data.get("items", []):
             if not title or title in i["snippet"]["title"]:
@@ -57,6 +75,15 @@ class YouTubePlaylist:
 
 # Homepage
 def index(request):
+    """
+    Renders the index.html template for the homepage.
+
+    If a POST request is received, performs a search based on the submitted form data and returns the search results.
+
+    Returns:
+    - If the request method is POST, renders the search.html template with the search results.
+    - If the request method is GET, renders the index.html template.
+    """
     if request.method == "POST":
         search = request.POST.get('search', '').split(' ')
         # Query the database for titles that include the list of search terms
@@ -80,8 +107,10 @@ SPORTS_INFO = {
 }
 
 
-# Function to get title and description of a video based on sport
 def get_pl_video_info(latest_video):
+    """
+    Returns a tuple containing the title and description of the video.
+    """
     title = latest_video["snippet"]["title"].split("|", 1)[0]
     description = latest_video["snippet"]["description"].split("#", 1)[0]
     return title, description
@@ -95,6 +124,17 @@ SPORT_FUNCTIONS = {
 
 
 def sport_highlights(request, sport):
+    """
+    Renders the playepisode.html template with the highlights for the specified sport.
+
+    Parameters:
+    - request (HttpRequest): The HTTP request object.
+    - sport (str): The sport for which to display highlights.
+
+    Returns:
+    - If the specified sport is valid, renders the playepisode.html template with the relevant data.
+    - If the specified sport is invalid, returns an HTTP response with an error message.
+    """
     if sport not in SPORTS_INFO:
         # Handle invalid sport error
         return HttpResponse("Invalid sport")
@@ -126,13 +166,18 @@ def sport_highlights(request, sport):
     return render(request, "highlights/playepisode.html", context)
 
 
-# Returns coming soon page for a sport/tournament that does not have highlights yet.
 def coming_soon(request):
+    """
+    Returns coming soon page for a sport/tournament that does not have highlights yet.
+    """
     return render(request, "highlights/comingsoon.html")
 
 
 # Get the details only for specific video clicked by user / request comes with the help of JS.
 def watch(request, video_link):
+    """
+    Retrieves the details of specific video and returns the data as Json.
+    """
     video_info = video_link.split('-', 2)
     prefix, video_id = video_info[0], video_info[1]
     params = {"key": KEY, "part": "snippet", "id": video_id}
