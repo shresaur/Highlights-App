@@ -2,8 +2,7 @@
 
 This is a web application for watching highlights of different sports tournaments. Currently, the application supports the following two tournaments:
 
-* Premier League 2022/2023
-* World Cup 2022 Qatar
+* Premier League 2023/2024
 
 The highlights are fetched from their respective YouTube playlists using the YouTube Data API v3.
 
