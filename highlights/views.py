@@ -96,7 +96,7 @@ def index(request):
 
 
 # Get premier league playlist data
-PL_PLAYLIST_ID = "PLXEMPXZ3PY1hjUnuEJqxxYoRQLOEw6WFj"
+PL_PLAYLIST_ID = "PLXEMPXZ3PY1hbtWszqtxDoe4ZtTE4bw7x"
 playlist = YouTubePlaylist(playlist_id=PL_PLAYLIST_ID, api_key=KEY)
 # Only get videos from playlist that has the specific title
 video_data_pl = playlist.get_video_data(title="| PREMIER LEAGUE HIGHLIGHTS |")
